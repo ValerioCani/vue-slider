@@ -37,8 +37,8 @@
                                 <div class="my-carousel-item active">
                                     <img class="img-fluid" v-bind:src="images[indice].url" :alt="images[indice].title">
                                     <div class="item-description px-3">
-                                        <h2>Svezia</h2>
-                                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.</p>
+                                        <h2>{{images[indice].title}}</h2>
+                                        <p>{{images[indice].description}}</p>
                                     </div>
                                 </div>
 
@@ -46,7 +46,7 @@
                             </div>
                             <div class="my-thumbnails position-relative">
 
-                                <div v-for="(image, index) in images" class="my-thumbnail">
+                                <div v-on:click="select(index)" v-for="(image, index) in images" class="my-thumbnail" v-bind:class="{ active: indice==index }">
                                     <img class="img-fluid" :src="image.url" :alt= "'Thumbnail of ' + image.title + ' picture'">
                                 </div>
 
@@ -62,7 +62,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

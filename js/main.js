@@ -36,17 +36,25 @@ const carousel = new Vue(
     },
 
     methods:{
+        select:function(number){
+            this.indice=number;
+        },
+        
         prev: function(event){
             this.indice==0?this.indice=this.images.length - 1:this.indice--;    
         },
 
         next: function(event){
             this.indice==this.images.length - 1?this.indice=0:this.indice++;    
-        }
+        },
+
+        
+    },
+
+    mounted () {
+        setInterval(function(){
+            this.indice==this.images.length - 1?this.indice=0:this.indice++;
+        }, 3000);
     }
 
-
-
-
-
-})
+});

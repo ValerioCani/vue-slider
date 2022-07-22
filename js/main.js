@@ -3,6 +3,7 @@ const carousel = new Vue(
 {
     el:"#carousel",
     data: {
+        
         indice : 0,
         images : [
             {
@@ -32,7 +33,11 @@ const carousel = new Vue(
                 title: 'Colombia',
                 description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et temporibus voluptatum suscipit tempore aliquid deleniti aut veniam.'
             },
-        ]
+        ],
+    },
+
+    mounted  () {
+        this.autoplay();
     },
 
     methods:{
@@ -48,13 +53,15 @@ const carousel = new Vue(
             this.indice==this.images.length - 1?this.indice=0:this.indice++;    
         },
 
+        autoplay:  function(){           
+            setInterval(function(){
+                this.indice==this.images.length - 1?this.indice=0:this.indice++;
+            }.bind(this), 3000);
+        }
+
         
     },
 
-    mounted () {
-        setInterval(function(){
-            this.indice==this.images.length - 1?this.indice=0:this.indice++;
-        }, 3000);
-    }
+    
 
 });

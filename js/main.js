@@ -3,7 +3,7 @@ const carousel = new Vue(
 {
     el:"#carousel",
     data: {
-        
+        over : false,
         indice : 0,
         images : [
             {
@@ -53,13 +53,19 @@ const carousel = new Vue(
             this.indice==this.images.length - 1?this.indice=0:this.indice++;    
         },
 
-        autoplay:  function(){           
-            setInterval(function(){
-                this.indice==this.images.length - 1?this.indice=0:this.indice++;
-            }.bind(this), 3000);
-        }
+        clear: function(){
+            clearInterval(this.autoplay);
+        },
 
-        
+        autoplay:  function(){      
+            setInterval(function(){
+                if(this.over==false){
+                    this.indice==this.images.length - 1?this.indice=0:this.indice++;    
+                }else{
+                    this.clear();
+                }
+            }.bind(this), 1000);
+        }
     },
 
     

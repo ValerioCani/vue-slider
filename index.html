@@ -34,7 +34,7 @@
                         <div class="my-carousel-container d-flex flex-column px-5" id="my-carousel">
                             <div class="my-carousel-images">
                                 
-                                <div class="my-carousel-item active">
+                                <div @mouseover="over=true" @mouseleave="over=false" class="my-carousel-item active">
                                     <img class="img-fluid" v-bind:src="images[indice].url" :alt="images[indice].title">
                                     <div class="item-description px-3">
                                         <h2>{{images[indice].title}}</h2>
